@@ -1,34 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AddressBook
 {
+    public class User
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Zip { get; set; }
+        public string City { get; set; }
+        public string Address { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+    }
+
     public class DataBase
     {
-        public Dictionary<string, string> UserData;
+        public Dictionary<string, User> UserData;
 
         public DataBase()
         {
-            UserData = new Dictionary<string, string>();
+            UserData = new Dictionary<string, User>();
         }
-        public string ADD_USER(string key, string value)
+
+        // Method to add user details
+        public void ADD_USER(string username, User user)
         {
-            return UserData[key] = value;
+            UserData[username] = user;
         }
-        public string SHOW_ALL_USERS(string key)
+
+        // Method to retrieve user details
+        public User GET_USER_DETAILS(string username)
         {
-            if (UserData.ContainsKey(key))
+            if (UserData.ContainsKey(username))
             {
-                return UserData[key];
+                return UserData[username];
             }
             else
             {
-                return "User Not found, Either Add a user or check with the case you entered";
+                return null; // User not found
             }
-
         }
     }
 }
