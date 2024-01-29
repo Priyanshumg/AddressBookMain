@@ -8,6 +8,7 @@ namespace AddressBook
 {
     public class AddressBook
     {
+
         public static void Greet()
         {
             Console.WriteLine("Hello User");
