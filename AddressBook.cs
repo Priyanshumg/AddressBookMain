@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace AddressBook
 {
-    internal class Program
+    public class AddressBook
     {
-        static void Main(string[] args)
+        public static void Greet()
         {
-            AddressBook.Greet();
-            Console.ReadLine();
+            Console.WriteLine("Hello User");
+            Console.WriteLine("Welcome to AddressBookMain");
         }
     }
 }
