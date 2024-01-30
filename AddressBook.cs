@@ -137,6 +137,45 @@ namespace AddressBook
             }
         }
 
+        public void DeleteUser(string username)
+        {
+            // Retrieve user details from the database
+            User userDetails = db.GET_USER_DETAILS(username);
+
+            // Check if user exists
+            if (userDetails != null)
+            {
+                // Display current user details
+                Console.WriteLine($"User Details for {username}:");
+                Console.WriteLine($"First Name: {userDetails.FirstName}");
+                Console.WriteLine($"Last Name: {userDetails.LastName}");
+                Console.WriteLine($"Zip: {userDetails.Zip}");
+                Console.WriteLine($"City: {userDetails.City}");
+                Console.WriteLine($"Address: {userDetails.Address}");
+                Console.WriteLine($"Phone Number: {userDetails.PhoneNumber}");
+                Console.WriteLine($"Email: {userDetails.Email}");
+
+                // Prompt user for confirmation
+                Console.WriteLine($"Are you sure you want to delete user {username}? (yes/no)");
+                string response = Console.ReadLine().ToLower();
+
+                if (response == "yes")
+                {
+                    // Delete user from the database
+                    db.UserData.Remove(username);
+                    Console.WriteLine($"User {username} deleted successfully");
+                }
+                else
+                {
+                    Console.WriteLine("Delete operation cancelled.");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"User {username} not found.");
+            }
+        }
+
 
         public void ReadCommand(string command)
         {
