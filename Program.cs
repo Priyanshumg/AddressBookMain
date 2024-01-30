@@ -16,11 +16,16 @@ namespace AddressBook
             addressBook.AddUser();
 
             // Prompt the user for input
-            Console.WriteLine("Enter a command (e.g., 'show username' or 'showall'):");
+            Console.WriteLine("Enter a command (e.g., 'show username' or 'showall' or 'edit username'):");
             string input = Console.ReadLine();
 
             // Process the user's command
-            addressBook.ReadCommand(input);
+            string[] parts = input.Split(' ');
+            if (parts.Length > 1 && parts[0].ToLower() == "edit")
+            {
+                string username = parts[1];
+                addressBook.EditUser(username);
+            }
 
             // Display details of all users
             addressBook.DisplayAllUsers();

@@ -76,6 +76,68 @@ namespace AddressBook
             }
         }
 
+        public void EditUser(string username)
+        {
+            // Retrieve user details from the database
+            User userDetails = db.GET_USER_DETAILS(username);
+
+            // Check if user exists
+            if (userDetails != null)
+            {
+                // Display current user details
+                Console.WriteLine($"Current User Details for {username}:");
+                Console.WriteLine($"First Name: {userDetails.FirstName}");
+                Console.WriteLine($"Last Name: {userDetails.LastName}");
+                Console.WriteLine($"Zip: {userDetails.Zip}");
+                Console.WriteLine($"City: {userDetails.City}");
+                Console.WriteLine($"Address: {userDetails.Address}");
+                Console.WriteLine($"Phone Number: {userDetails.PhoneNumber}");
+                Console.WriteLine($"Email: {userDetails.Email}");
+
+                // Prompt user for new details
+                Console.WriteLine($"Enter new details for {username}:");
+                Console.Write("First Name: ");
+                string firstName = Console.ReadLine();
+
+                Console.Write("Last Name: ");
+                string lastName = Console.ReadLine();
+
+                Console.Write("Zip: ");
+                string zip = Console.ReadLine();
+
+                Console.Write("City: ");
+                string city = Console.ReadLine();
+
+                Console.Write("Address: ");
+                string address = Console.ReadLine();
+
+                Console.Write("Phone Number: ");
+                string phoneNumber = Console.ReadLine();
+
+                Console.Write("Email: ");
+                string email = Console.ReadLine();
+
+                // Update user details
+                userDetails.FirstName = firstName;
+                userDetails.LastName = lastName;
+                userDetails.Zip = zip;
+                userDetails.City = city;
+                userDetails.Address = address;
+                userDetails.PhoneNumber = phoneNumber;
+                userDetails.Email = email;
+
+                // Update user details in the database
+                db.ADD_USER(username, userDetails);
+
+                Console.WriteLine($"User details for {username} updated successfully");
+            }
+            else
+            {
+                Console.WriteLine($"User {username} not found.");
+            }
+        }
+
+
         public void ReadCommand(string command)
         {
             // Split into parts
