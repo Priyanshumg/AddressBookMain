@@ -16,7 +16,7 @@ namespace AddressBook
             addressBook.AddUser();
 
             // Prompt the user for input
-            Console.WriteLine("Enter a command (e.g., 'show username' or 'showall' or 'edit username'):");
+            Console.WriteLine("Enter a command (e.g., 'show FirstName_LastName' or 'showall' or 'edit FirstName_LastName'):");
             string input = Console.ReadLine();
 
             // Process the user's command
